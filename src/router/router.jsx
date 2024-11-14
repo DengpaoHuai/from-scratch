@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import WelcomeScreen from "../pages/WelcomeScreen";
 import MainLayout from "../components/MainLayout";
+import DatatableScreen from "../pages/DatatableScreen";
 
 const router = createBrowserRouter([
   {
@@ -13,7 +14,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <div>Dashboard</div>,
+        element: <DatatableScreen />,
       },
       {
         path: "profile",
