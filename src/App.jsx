@@ -1,19 +1,19 @@
 import { RouterProvider } from "react-router-dom";
 import router from "./router/router";
 import { PrimeReactProvider } from "primereact/api";
-import SnackbarProvider from "react-simple-snackbar";
 import SnackBarContextProvider from "./contexts/SnackBarContextProvider";
+import { ModalContextProvider } from "./contexts/ModalContextProvider";
 
 function App() {
   return (
     <>
-      <SnackBarContextProvider>
-        <PrimeReactProvider>
-          <SnackbarProvider>
+      <PrimeReactProvider>
+        <SnackBarContextProvider>
+          <ModalContextProvider>
             <RouterProvider router={router}></RouterProvider>
-          </SnackbarProvider>
-        </PrimeReactProvider>
-      </SnackBarContextProvider>
+          </ModalContextProvider>
+        </SnackBarContextProvider>
+      </PrimeReactProvider>
     </>
   );
 }

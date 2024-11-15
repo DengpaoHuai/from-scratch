@@ -2,15 +2,16 @@ import { Column } from "primereact/column";
 import { DataTable } from "primereact/datatable";
 import { useState } from "react";
 import { useEffect } from "react";
-import CustomSnackBar from "../components/CustomSnackBar";
 import { useContext } from "react";
 import { SnackBarContext } from "../contexts/SnackBarContextProvider";
 import { Button } from "primereact/button";
+import { useModal } from "../contexts/ModalContextProvider";
 
 const DatatableScreen = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const { showSnack } = useContext(SnackBarContext);
+  const { displayModal } = useModal();
 
   useEffect(() => {
     setLoading(true);
@@ -44,6 +45,13 @@ const DatatableScreen = () => {
           }}
         >
           ok
+        </Button>
+        <Button
+          onClick={() => {
+            displayModal("Title", "Content");
+          }}
+        >
+          Modal
         </Button>
         <DataTable
           value={data}
