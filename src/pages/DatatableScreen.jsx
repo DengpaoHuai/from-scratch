@@ -2,10 +2,15 @@ import { Column } from "primereact/column";
 import { DataTable } from "primereact/datatable";
 import { useState } from "react";
 import { useEffect } from "react";
+import CustomSnackBar from "../components/CustomSnackBar";
+import { useContext } from "react";
+import { SnackBarContext } from "../contexts/SnackBarContextProvider";
+import { Button } from "primereact/button";
 
 const DatatableScreen = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const { showSnack } = useContext(SnackBarContext);
 
   useEffect(() => {
     setLoading(true);
@@ -17,9 +22,6 @@ const DatatableScreen = () => {
       });
   }, []);
 
-  //TO DO, centrer le datatable et ajouter un srtyle professionnel avec tailwind
-
-  // placer le datatable dans un container, une card, avec une hauteur fixe et un padding
   return (
     <div
       className="
@@ -28,9 +30,7 @@ const DatatableScreen = () => {
     flex
     justify-center
     items-center
-    h-screen
     gap-4
-    
     "
     >
       <div
@@ -38,6 +38,13 @@ const DatatableScreen = () => {
     w-full 
     "
       >
+        <Button
+          onClick={() => {
+            showSnack();
+          }}
+        >
+          ok
+        </Button>
         <DataTable
           value={data}
           loading={loading}
